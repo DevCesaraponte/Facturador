@@ -1,0 +1,29 @@
+Private Sub ComboBox2_Enter()
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+Set VENTAS = wb.Worksheets("VENTAS")
+Set METODO_PAGO = wb.Worksheets("METODO PAGO")
+Set CFG = wb.Worksheets("CFG")
+Set FACTURA = wb.Worksheets("FACTURA")
+Set TEMP = wb.Worksheets("temp")
+
+IF  CFG.Cells(4,22) ="S" Then
+
+END IF
+End Sub
+
+If Len(UF_FACTURA.ComboBox2.Value) > 9 Then
+Call custom("Y", "cb", , UF_FACTURA.ComboBox3)
+UF_FACTURA.Label25.Enabled = True
+Else
+'Call custom("N", "cb", , UF_FACTURA.ComboBox3)
+'UF_FACTURA.ComboBox2.DropDown
+'UF_FACTURA.ComboBox2.AutoWordSelect = True
+    MsgBox ("Debe Ingresar Numero Movil"), vbOKOnly, "Facturador Error 1004"
+'Call custom("N", "cb", , UF_FACTURA.ComboBox3)
+UF_FACTURA.ComboBox2.SetFocus
+End If

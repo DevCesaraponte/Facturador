@@ -1,0 +1,1008 @@
+
+Public wb As Workbook
+Public INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+Function custom(Ques As String, tpe As String, Optional tb As MSForms.TextBox, Optional cb As MSForms.ComboBox)
+
+If tpe = "tb" Then
+
+    If Ques = "Y" Then
+        tb.ForeColor = vbBlack
+        tb.BackColor = vbWhite
+        tb.Enabled = True
+        tb.Visible = True
+    ElseIf Ques = "N" Then
+        tb.ForeColor = vbBlack
+        tb.BackColor = vbGrayText
+        tb.Enabled = False
+        tb.Value = ""
+    End If
+ElseIf tpe = "cb" Then
+    If Ques = "Y" Then
+        cb.ForeColor = vbBlack
+        cb.BackColor = vbWhite
+        cb.Enabled = True
+    ElseIf Ques = "N" Then
+        cb.ForeColor = vbBlack
+        cb.BackColor = vbGrayText
+        cb.Enabled = False
+        cb.Value = ""
+    End If
+End If
+End Function
+Function libro()
+'Dim wb As Workbook
+'Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+Set VENTAS = wb.Worksheets("VENTAS")
+Set METODO_PAGO = wb.Worksheets("METODO PAGO")
+Set CFG = wb.Worksheets("CFG")
+Set FACTURA = wb.Worksheets("FACTURA")
+Set TEMP = wb.Worksheets("temp")
+
+End Function
+Function VAR_PANTALLA()
+
+With UF_FACTURA
+
+    .ListBox1.TabStop = False
+    .BackColor = RGB(72, 78, 128) 'RGB(230, 230, 250)
+    
+    .Label0.Caption = CFG.Cells(5, 13).Value
+    .Label0.BorderStyle = fmBorderStyleNone
+    .Label0.Font.Bold = True
+    .Label0.Font.Underline = True
+    .Label0.Font.Size = 32
+    .Label0.TextAlign = fmTextAlignCenter
+    .Label0.BackColor = RGB(72, 78, 128) 'RGB(127, 255, 212) 'RGB(70, 130, 180)
+    .Label0.ForeColor = vbWhite
+    
+    .Frame5.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .Frame5.Caption = ""
+    .Frame5.BorderStyle = fmBorderStyleNone
+    
+    .Frame4.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .Frame4.Caption = "Registro y Busqueda "
+    .Frame4.Font.Bold = True
+    .Frame4.Font.Italic = True
+    .Frame4.Font.Underline = True
+    .Frame4.ForeColor = RGB(93, 98, 139)
+    .Frame4.Font.Size = 9
+    .Frame4.KeepScrollBarsVisible = fmScrollBarsBoth
+    .Frame4.BorderColor = RGB(93, 98, 139)
+    .Frame4.BorderStyle = fmBorderStyleSingle
+    
+    .OptionButton1.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .OptionButton1.Font.Size = 10
+    .OptionButton2.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .OptionButton2.Font.Size = 10
+    .OptionButton3.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .OptionButton3.Font.Size = 10
+    .OptionButton4.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .OptionButton4.Font.Size = 10
+    
+    
+    
+    .Frame6.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .Frame6.Caption = ""
+    .Frame6.BorderStyle = fmBorderStyleNone
+    .Frame6.Visible = False
+    .CommandButton3.Visible = True
+    .Frame2.Visible = False
+    
+    .Label23.Visible = False
+    .ComboBox1.Visible = False
+    .Label24.Visible = False
+    .ComboBox2.Visible = False
+    .Label25.Visible = False
+    .ComboBox3.Visible = False
+    
+    .Frame3.Visible = False
+    
+    .Frame2.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .Frame2.Caption = "Datos del Cliente "
+    .Frame2.Font.Bold = True
+    .Frame2.Font.Italic = True
+    .Frame2.Font.Underline = True
+    .Frame2.ForeColor = RGB(93, 98, 139)
+    .Frame2.Font.Size = 9
+    .Frame2.KeepScrollBarsVisible = fmScrollBarsBoth
+    .Frame2.BorderColor = RGB(93, 98, 139)
+    .Frame2.BorderStyle = fmBorderStyleSingle
+    
+    .Label23.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    '.Label23.Font.Size = 10
+    
+    .ComboBox1.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .ComboBox1.DropButtonStyle = fmDropButtonStyleArrow
+    .ComboBox1.ListStyle = fmListStyleOption
+    
+    
+    .Label24.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .ComboBox2.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .ComboBox2.DropButtonStyle = fmDropButtonStyleArrow
+    .ComboBox2.ListStyle = fmListStyleOption
+    
+    .Label25.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .ComboBox3.BackColor = RGB(246, 245, 225) 'RGB(72, 78, 128)
+    .ComboBox3.DropButtonStyle = fmDropButtonStyleArrow
+    .ComboBox3.ListStyle = fmListStyleOption
+    
+    
+
+    
+End With
+
+End Function
+Function DISENO_FACT()
+
+
+
+With Label1
+        .Caption = FACTURA.Cells(1, 6)
+        .BackColor = RGB(65, 105, 225)
+        .ForeColor = vbWhite
+        .TextAlign = fmTextAlignCenter
+        .Font.Size = 10
+End With
+
+With Label2
+        .Caption = FACTURA.Cells(2, 6)
+        .BackColor = vbWhite
+        .ForeColor = vbBlack
+        .TextAlign = fmTextAlignCenter
+        .Font.Size = 10
+        .BorderStyle = fmBorderStyleSingle
+End With
+With Label3
+        .Caption = FACTURA.Cells(3, 6)
+        .BackColor = RGB(65, 105, 225)
+        .ForeColor = vbWhite
+        .TextAlign = fmTextAlignCenter
+        .Font.Size = 10
+End With
+
+With Label4
+        .Caption = FACTURA.Cells(4, 6)
+        .BackColor = vbWhite
+        .ForeColor = vbBlack
+        .TextAlign = fmTextAlignCenter
+        .Font.Size = 10
+        .BorderStyle = fmBorderStyleSingle
+End With
+
+With UF_FACTURA.Label5
+
+.Caption = FACTURA.Cells(3, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label6
+
+.Caption = FACTURA.Cells(4, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label7
+
+.Caption = FACTURA.Cells(5, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label8
+
+.Caption = FACTURA.Cells(6, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+
+With UF_FACTURA.Label9
+
+.Caption = FACTURA.Cells(7, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label10
+
+.Caption = FACTURA.Cells(3, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label11
+
+.Caption = FACTURA.Cells(4, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label12
+
+.Caption = FACTURA.Cells(5, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label13
+
+.Caption = FACTURA.Cells(6, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label14
+
+.Caption = FACTURA.Cells(7, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label15
+
+.Caption = FACTURA.Cells(5, 6)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignCenter
+.Font.Size = 10
+
+End With
+
+With UF_FACTURA.Label16
+
+.Caption = FACTURA.Cells(6, 6)
+.BackColor = vbWhite
+.ForeColor = vbBlack
+.TextAlign = fmTextAlignCenter
+.Font.Size = 10
+.BorderStyle = fmBorderStyleSingle
+
+End With
+
+With UF_FACTURA.Label17
+
+.Caption = FACTURA.Cells(7, 6)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignCenter
+.Font.Size = 10
+
+
+End With
+
+With UF_FACTURA.Label18
+
+.Caption = FACTURA.Cells(8, 6)
+.BackColor = vbWhite
+.ForeColor = vbBlack
+.TextAlign = fmTextAlignCenter
+.Font.Size = 10
+.BorderStyle = fmBorderStyleSingle
+
+End With
+
+With UF_FACTURA.Label19
+
+.Caption = FACTURA.Cells(9, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignCenter
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label20
+
+.Caption = FACTURA.Cells(10, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label21
+
+.Caption = FACTURA.Cells(11, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label22
+
+.Caption = FACTURA.Cells(12, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Frame1
+        
+        .BackColor = vbWhite
+End With
+
+With UF_FACTURA.ListBox1
+    .ColumnCount = 5
+    .ColumnHeads = True
+    .RowSource = "TEMP!A2:E33"
+    .ColumnWidths = "100;50;65;30;70"
+End With
+
+UF_FACTURA.CommandButton2.Visible = False
+
+
+End Function
+Function DATOS_CLIENTE()
+
+UF_FACTURA.Label23.Caption = CFG.Cells(6, 13)
+UF_FACTURA.Label24.Caption = CFG.Cells(7, 13)
+UF_FACTURA.Label25.Caption = CFG.Cells(8, 13)
+
+End Function
+Function PRODUCTOS()
+
+UF_FACTURA.Label26.Caption = CFG.Cells(9, 13)
+UF_FACTURA.Label27.Caption = CFG.Cells(10, 13)
+UF_FACTURA.Label28.Caption = CFG.Cells(11, 13)
+UF_FACTURA.Label32.Caption = CFG.Cells(12, 13)
+UF_FACTURA.Label33.Caption = CFG.Cells(13, 13)
+UF_FACTURA.Label34.Caption = CFG.Cells(14, 13)
+UF_FACTURA.Label35.Caption = CFG.Cells(15, 13)
+UF_FACTURA.Label36.Caption = CFG.Cells(16, 13)
+UF_FACTURA.Label37.Caption = CFG.Cells(17, 13)
+UF_FACTURA.Label38.Caption = CFG.Cells(18, 13)
+UF_FACTURA.Label39.Caption = CFG.Cells(19, 13)
+UF_FACTURA.Label40.Caption = CFG.Cells(20, 13)
+
+UF_FACTURA.Label27.Enabled = False
+UF_FACTURA.Label28.Enabled = False
+UF_FACTURA.Label32.Enabled = False
+UF_FACTURA.Label33.Enabled = False
+UF_FACTURA.Label34.Enabled = False
+
+UF_FACTURA.TextBox1.Enabled = False
+UF_FACTURA.TextBox2.Enabled = False
+UF_FACTURA.TextBox3.Enabled = False
+End Function
+Function DATOS_INICIALES()
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+Set VENTAS = wb.Worksheets("VENTAS")
+Set METODO_PAGO = wb.Worksheets("METODO PAGO")
+Set CFG = wb.Worksheets("CFG")
+Set FACTURA = wb.Worksheets("FACTURA")
+Set TEMP = wb.Worksheets("temp")
+
+TEMP.Activate
+
+TEMP.Range("A2:E26").ClearContents
+
+UF_FACTURA.ComboBox1.Value = ""
+UF_FACTURA.ComboBox2.Value = ""
+UF_FACTURA.ComboBox3.Value = ""
+UF_FACTURA.ComboBox4.Value = ""
+
+
+UF_FACTURA.TextBox1.Value = ""
+UF_FACTURA.TextBox2.Value = ""
+
+UF_FACTURA.Label33.Enabled = False
+UF_FACTURA.Label34.Enabled = False
+UF_FACTURA.TextBox4.Enabled = False
+UF_FACTURA.TextBox5.Enabled = False
+
+UF_FACTURA.Label35.Enabled = False
+UF_FACTURA.Label36.Enabled = False
+UF_FACTURA.Label37.Enabled = False
+UF_FACTURA.Label38.Enabled = False
+UF_FACTURA.Label39.Enabled = False
+UF_FACTURA.Label40.Enabled = False
+
+UF_FACTURA.Label35.Visible = False
+UF_FACTURA.Label36.Visible = False
+UF_FACTURA.Label37.Visible = False
+UF_FACTURA.Label38.Visible = False
+UF_FACTURA.Label39.Visible = False
+UF_FACTURA.Label40.Visible = False
+
+
+
+UF_FACTURA.TextBox6.Enabled = False
+UF_FACTURA.TextBox7.Enabled = False
+UF_FACTURA.TextBox8.Enabled = False
+UF_FACTURA.TextBox9.Enabled = False
+UF_FACTURA.TextBox10.Enabled = False
+UF_FACTURA.TextBox11.Enabled = False
+
+UF_FACTURA.TextBox6.Visible = False
+UF_FACTURA.TextBox7.Visible = False
+UF_FACTURA.TextBox8.Visible = False
+UF_FACTURA.TextBox9.Visible = False
+UF_FACTURA.TextBox10.Visible = False
+UF_FACTURA.TextBox11.Visible = False
+
+
+End Function
+
+Private Sub ComboBox1_AfterUpdate()
+Dim UltimaFila, fila As Long
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+
+CLIENTES.Activate
+UltimaFila = CLIENTES.Range("B" & Rows.Count).End(xlUp).Row
+
+    For c = 1 To UltimaFila
+        fila = fila + 1
+        ii = Cells(fila, 2) & " " & Cells(fila, 3)
+        If ii = UF_FACTURA.ComboBox1.Value Then
+                UF_FACTURA.ComboBox2.Value = Cells(fila, 5)
+                UF_FACTURA.ComboBox3.Value = Cells(fila, 4)
+        Exit For
+        End If
+    Next c
+    
+    If UF_FACTURA.OptionButton4.Value = True Then
+        UF_FACTURA.ComboBox2.Visible = True
+        UF_FACTURA.ComboBox3.Visible = True
+        UF_FACTURA.Frame3.Visible = True
+        UF_FACTURA.CommandButton1.Visible = False
+    End If
+    
+End Sub
+
+Private Sub ComboBox1_Change()
+
+If OptionButton4.Value = True Then
+    ComboBox1.ListRows = 0
+    FiltroComboBox1 UCase(ComboBox1.Value)
+    UF_FACTURA.ComboBox1.DropDown
+End If
+
+'UF_FACTURA.ComboBox1.DropDown
+End Sub
+Public Sub FiltroComboBox1(letra As String)
+ Dim UltimaFila, Flag, fila As Long
+ 
+ Dim wb As Workbook
+ Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+ 
+ Flag = 0
+ 
+ CLIENTES.Activate
+ UltimaFila = CLIENTES.Range("B" & Rows.Count).End(xlUp).Row
+ tam = Len(UF_FACTURA.ComboBox1.Value)
+     fila = 1
+ For Each opcion In CLIENTES.Range(Cells(2, 2), Cells(UltimaFila, 1))
+    
+    opcion = Cells(fila, 2) & " " & Cells(fila, 3)
+    If InStr(1, opcion, letra, vbTextCompare) <> 0 Then 'And UF_FACTURA.ComboBox1.ListCount = 0
+    
+       UF_FACTURA.ComboBox1.AddItem opcion
+       Flag = 1
+       Exit For
+    End If
+    fila = fila + 1
+ Next
+ If Flag = 0 Then
+   ComboBox1.ListRows = 0
+    MsgBox ("Error Producto No Exisite Cliente"), vbInformation, "FACTURACION - ERROR - 1001"
+ End If
+ 
+End Sub
+
+Private Sub ComboBox1_DropButtonClick()
+ Dim UltimaFila, Flag As Long
+ Dim celda, rango As Range
+ Dim CopyRange, nombre, apellido As String
+ Dim wb As Workbook
+ Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+CLIENTES.Activate
+
+ tam = UF_FACTURA.ComboBox1.ListCount
+ If Len(UF_FACTURA.ComboBox1.Value) = 0 Then
+    UF_FACTURA.ComboBox1.Clear
+    tam = UF_FACTURA.ComboBox1.ListCount
+End If
+If UF_FACTURA.OptionButton4.Value = True And tam = 0 Then
+
+    If Len(UF_FACTURA.ComboBox1.Value) = 0 Then
+        UF_FACTURA.ComboBox1.Clear
+    End If
+
+
+     UltimaFila = CLIENTES.Range("B" & Rows.Count).End(xlUp).Row
+     CopyRange = "B" & 2 & ":B" & UltimaFila
+     'rango = CLIENTES.Range(Cells(2, 2), Cells(UltimaFila, 1))
+     Set rango = Range(CopyRange)
+     Flag = 2
+     
+     For Each celda In rango
+        
+        nombre = celda.Value
+        apellido = Cells(Flag, 3)
+        With ComboBox1
+            .Value = ""
+        End With
+        UF_FACTURA.ComboBox1.AddItem nombre & " " & apellido
+       
+            If Flag = UltimaFila Then
+               Exit For
+            End If
+            
+            Flag = Flag + 1
+     Next celda
+    
+
+
+End If
+ 
+
+ 
+End Sub
+
+Private Sub ComboBox2_AfterUpdate()
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+Set VENTAS = wb.Worksheets("VENTAS")
+Set METODO_PAGO = wb.Worksheets("METODO PAGO")
+Set CFG = wb.Worksheets("CFG")
+Set FACTURA = wb.Worksheets("FACTURA")
+Set TEMP = wb.Worksheets("temp")
+
+CFG.Activate
+
+If CFG.Cells(4, 22) = "S" Then
+    If Len(UF_FACTURA.ComboBox2.Value) > 9 Then
+        UF_FACTURA.CommandButton3.Visible = True
+
+    Else
+
+        MsgBox ("Debe Ingresar Numero Movil"), vbOKOnly, "Facturador Error 1004"
+        UF_FACTURA.ComboBox2.SetFocus
+    End If
+End If
+End Sub
+
+Private Sub ComboBox2_Change()
+
+End Sub
+
+Private Sub ComboBox2_Enter()
+End Sub
+
+Private Sub ComboBox3_AfterUpdate()
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+Set VENTAS = wb.Worksheets("VENTAS")
+Set METODO_PAGO = wb.Worksheets("METODO PAGO")
+Set CFG = wb.Worksheets("CFG")
+Set FACTURA = wb.Worksheets("FACTURA")
+Set TEMP = wb.Worksheets("temp")
+
+
+If CFG.Cells(5, 22) = "S" Then
+    If Len(UF_FACTURA.ComboBox2.Value) > 7 Then
+        UF_FACTURA.CommandButton3.Visible = True
+
+    Else
+        MsgBox ("Debe Ingresar Cedula"), vbOKOnly, "Facturador Error 1005"
+        UF_FACTURA.ComboBox2.SetFocus
+    End If
+End If
+End Sub
+
+Private Sub ComboBox3_Change()
+
+End Sub
+
+Private Sub ComboBox4_AfterUpdate()
+Dim UltimaFila, fila As Long
+
+UltimaFila = INVENTARIO.Range("B" & Rows.Count).End(xlUp).Row
+INVENTARIO.Activate
+    For Each i In INVENTARIO.Range(Cells(2, 2), Cells(UltimaFila, 1))
+        fila = fila + 1
+        If i = UF_FACTURA.ComboBox4.Value Then
+            UF_FACTURA.TextBox1.Value = INVENTARIO.Cells(fila, 3)
+            UF_FACTURA.TextBox2.Value = FormatCurrency(INVENTARIO.Cells(fila, 7))
+            UF_FACTURA.TextBox3.Value = INVENTARIO.Cells(fila, 4)
+            UF_FACTURA.Label27.Enabled = True
+            UF_FACTURA.Label28.Enabled = True
+            UF_FACTURA.Label32.Enabled = True
+            UF_FACTURA.Label33.Enabled = True
+            UF_FACTURA.TextBox4.Enabled = True
+                If INVENTARIO.Cells(fila, 4) = CFG.Cells(2, 17) Then
+                   
+                   UF_FACTURA.Label34.Enabled = True
+                   UF_FACTURA.TextBox5.Enabled = True
+                Else
+                 
+                   UF_FACTURA.Label34.Enabled = False
+                   UF_FACTURA.TextBox5.Enabled = False
+                End If
+        Exit For
+        End If
+        
+    Next
+    
+    
+    'UF_FACTURA.TextBox1.Enabled = True
+    UF_FACTURA.CommandButton1.Visible = True
+    UF_FACTURA.CommandButton1.Enabled = True
+End Sub
+
+Private Sub ComboBox4_BeforeUpdate(ByVal Cancel As MSForms.ReturnBoolean)
+
+End Sub
+
+Private Sub ComboBox4_Change()
+
+FiltroComboBox4 UCase(ComboBox4.Value)
+UF_FACTURA.ComboBox4.DropDown
+
+End Sub
+Public Sub FiltroComboBox4(letra As String)
+ Dim UltimaFila, Flag As Long
+ Dim wb As Workbook
+ Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+ 
+ Flag = 0
+ UltimaFila = INVENTARIO.Range("B" & Rows.Count).End(xlUp).Row
+ INVENTARIO.Activate
+ 
+ For Each opcion In INVENTARIO.Range(Cells(2, 2), Cells(UltimaFila, 1))
+    If InStr(1, opcion, letra, vbTextCompare) <> 0 Then
+       UF_FACTURA.ComboBox4.AddItem opcion
+       Flag = 1
+       Exit For
+    End If
+ Next
+ If Flag = 0 Then
+    MsgBox ("Error Producto No Exisite Producto"), vbInformation, "FACTURACION - ERROR - 1002"
+ End If
+ 
+End Sub
+
+
+Private Sub ComboBox4_DropButtonClick()
+Dim UltimaFila As Long
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+INVENTARIO.Activate
+
+'UF_FACTURA.ComboBox4.Clear
+ If UF_FACTURA.ComboBox4.Value = "" Then
+    UF_FACTURA.ComboBox4.Clear
+    UltimaFila = INVENTARIO.Range("B" & Rows.Count).End(xlUp).Row
+    INVENTARIO.Activate
+        For Each i In INVENTARIO.Range(Cells(2, 2), Cells(UltimaFila, 1))
+           If i <> "" Then
+                UF_FACTURA.ComboBox4.AddItem i
+                
+           End If
+        Next
+  End If
+ 
+ End Sub
+
+
+
+
+Private Sub ComboBox4_Enter()
+
+End Sub
+
+Private Sub CommandButton1_Click()
+Dim answer As Integer
+Dim UltimaFila As Long
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA, TEMP As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set FACTURA = wb.Worksheets("FACTURA")
+Set TEMP = wb.Worksheets("temp")
+Set CFG = wb.Worksheets("CFG")
+FACTURA.Activate
+
+UltimaFila = TEMP.Range("A" & Rows.Count).End(xlUp).Row
+answer = MsgBox("¿ Esta Seguro de Agregar Este Item ?" & vbNewLine & vbNewLine & UF_FACTURA.ComboBox4.Value, vbQuestion + vbYesNo + vbDefaultButton2, "FACTURADOR")
+
+If answer = vbYes Then
+
+    If UF_FACTURA.TextBox4 > UF_FACTURA.TextBox1.Value Then
+    
+    MsgBox ("El Valor de " & CFG.Cells(13, 13).Value & "Es Mayor A La Existencia"), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURADOR"
+    
+    ElseIf UF_FACTURA.TextBox4 = 0 Or UF_FACTURA.TextBox4 = "" Then
+    
+    MsgBox ("El Valor de " & CFG.Cells(13, 13).Value & " No Puede Ser Vacia o Cero 0 "), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURADOR"
+    
+    ElseIf UF_FACTURA.TextBox5 = 0 Or UF_FACTURA.TextBox5 = "" Then
+    
+    MsgBox ("El Valor de " & CFG.Cells(14, 13).Value & " No Puede Ser Vacia o Cero 0 "), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURADOR"
+    
+    Else
+
+   TEMP.Cells(UltimaFila + 1, 1).Value = UF_FACTURA.ComboBox4.Value
+   TEMP.Cells(UltimaFila + 1, 2).Value = UF_FACTURA.TextBox4.Value
+   TEMP.Cells(UltimaFila + 1, 3).Value = FormatNumber(UF_FACTURA.TextBox2.Value) * 1
+   TEMP.Cells(UltimaFila + 1, 5).Value = (TEMP.Cells(UltimaFila + 1, 2).Value) * (TEMP.Cells(UltimaFila + 1, 3).Value) * 1
+    
+   UF_FACTURA.Label29.Caption = UF_FACTURA.ComboBox1.Value
+   UF_FACTURA.Label30.Caption = UF_FACTURA.ComboBox3.Value
+   UF_FACTURA.Label31.Caption = UF_FACTURA.ComboBox2.Value
+   
+    
+    
+    With UF_FACTURA.ListBox1
+        .ColumnCount = 5
+        .ColumnHeads = True
+        .RowSource = "TEMP!A2:E36"
+        .ColumnWidths = "100;50;65;30;70"
+    End With
+    
+    End If
+    
+    
+
+End If
+
+
+End Sub
+
+
+
+Private Sub OptionButton1_Click()
+    
+    With UF_FACTURA
+    
+        .Frame6.Visible = True
+        .Frame2.Visible = True
+        .Label23.Visible = True
+        .ComboBox1.Visible = False
+        .ComboBox1.BackColor = vbWhite
+        .Label24.Visible = True
+        .ComboBox2.Visible = True
+        .ComboBox2.BackColor = vbWhite
+        .Label25.Visible = True
+        .ComboBox3.Visible = True
+        .ComboBox3.BackColor = vbWhite
+        
+        .Label24.Enabled = False
+        .ComboBox2.Enabled = False
+        .Label25.Enabled = False
+        .ComboBox3.Enabled = False
+        .TextBox13.Enabled = False
+        
+        
+        
+    End With
+End Sub
+
+Private Sub OptionButton2_Click()
+With UF_FACTURA
+
+    .Frame6.Visible = True
+    .Frame2.Visible = True
+    
+    .Label23.Visible = False
+    .ComboBox1.Visible = False
+    
+    .Label24.Visible = False
+    .ComboBox2.Visible = False
+    
+    
+    .Label25.Visible = True
+    .ComboBox3.Visible = True
+    .ComboBox3.BackColor = vbWhite
+    .TextBox12.Visible = False
+    .TextBox13.Visible = False
+    
+End With
+End Sub
+
+Private Sub OptionButton3_Click()
+With UF_FACTURA
+
+    .Frame6.Visible = True
+    .Frame2.Visible = True
+    
+    .Label23.Visible = False
+    .ComboBox1.Visible = False
+    
+    .Label24.Visible = True
+    .ComboBox2.Visible = True
+    .ComboBox2.BackColor = vbWhite
+    
+    .Label25.Visible = False
+    .ComboBox3.Visible = False
+    
+    .TextBox12.Visible = False
+    .TextBox13.Visible = False
+    
+End With
+End Sub
+
+Private Sub OptionButton4_Click()
+
+With UF_FACTURA
+
+    .Frame6.Visible = True
+    .Frame2.Visible = True
+    .Label23.Visible = True
+    .ComboBox1.Visible = True
+    .ComboBox1.BackColor = vbWhite
+    .Label24.Visible = False
+    .ComboBox2.Visible = False
+    .Label25.Visible = False
+    .ComboBox3.Visible = False
+    .TextBox12.Visible = False
+    .TextBox13.Visible = False
+    
+End With
+
+End Sub
+
+Private Sub TextBox12_AfterUpdate()
+
+End Sub
+
+Private Sub TextBox12_Change()
+TextBox12_Enter
+End Sub
+
+Private Sub TextBox12_Enter()
+If Len(UF_FACTURA.TextBox12) > 0 Then
+Call custom("Y", "tb", UF_FACTURA.TextBox13)
+Else
+    MsgBox ("Debe Ingresar Nombre"), vbOKOnly, "Facturador Error 1003"
+Call custom("N", "tb", UF_FACTURA.TextBox13)
+Call custom("N", "cb", , UF_FACTURA.ComboBox2)
+
+Call custom("N", "cb", , UF_FACTURA.ComboBox3)
+
+End If
+End Sub
+
+Private Sub TextBox13_AfterUpdate()
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+Set VENTAS = wb.Worksheets("VENTAS")
+Set METODO_PAGO = wb.Worksheets("METODO PAGO")
+Set CFG = wb.Worksheets("CFG")
+Set FACTURA = wb.Worksheets("FACTURA")
+Set TEMP = wb.Worksheets("temp")
+
+If CFG.Cells(4, 22) = "S" Then
+    UF_FACTURA.ComboBox2.TabIndex = 8
+    Call custom("Y", "cb", , UF_FACTURA.ComboBox2)
+End If
+
+If CFG.Cells(5, 22) = "S" Then
+    UF_FACTURA.ComboBox3.TabIndex = 9
+    Call custom("Y", "cb", , UF_FACTURA.ComboBox3)
+End If
+
+If CFG.Cells(5, 22) = "N" Or CFG.Cells(4, 22) = "N" Then
+    UF_FACTURA.ComboBox2.TabIndex = 8
+    UF_FACTURA.ComboBox3.TabIndex = 9
+    UF_FACTURA.Label24.Enabled = True
+    UF_FACTURA.Label25.Enabled = True
+    Call custom("Y", "cb", , UF_FACTURA.ComboBox2)
+    Call custom("Y", "cb", , UF_FACTURA.ComboBox3)
+    UF_FACTURA.CommandButton3.Visible = True
+End If
+
+
+End Sub
+
+Private Sub TextBox13_Change()
+TextBox13_Enter
+End Sub
+
+Private Sub TextBox13_Enter()
+
+If Len(UF_FACTURA.TextBox13) > 0 Then
+Call custom("Y", "cb", , UF_FACTURA.ComboBox2)
+UF_FACTURA.Label24.Enabled = True
+
+Else
+    MsgBox ("Debe Ingresar Apellido"), vbOKOnly, "Facturador Error 1004"
+Call custom("N", "cb", , UF_FACTURA.ComboBox2)
+
+End If
+
+
+
+End Sub
+
+Private Sub UserForm_Initialize()
+Call libro
+Call VAR_PANTALLA
+Call DISENO_FACT
+Call DATOS_CLIENTE
+Call PRODUCTOS
+Call DATOS_INICIALES
+
+Image1.Picture = LoadPicture("D:\documentos\POS\cfg\img\Spiderman-Logo-1_7.JPG")
+
+End Sub
+

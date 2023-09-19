@@ -1,0 +1,42 @@
+Dim wb As Workbook
+Dim INVENTARIO, CLIENTE, VENTAS, METODO_PAGO, CFG, FACTURA As Worksheet
+Dim Dim UltimaFila_Ventas, UltimaFila_Clientes, UltimaFila_Pagos As Long As Long
+dim Id_Ventas, Id_Cliente as Long
+
+Set wb = Workbooks("FACTURADOR.xlsm")
+
+Set INVENTARIO = wb.Worksheets("INVENTARIO")
+Set CLIENTES = wb.Worksheets("CLIENTES")
+Set VENTAS = wb.Worksheets("VENTAS")
+Set METODO_PAGO = wb.Worksheets("METODO PAGO")
+Set CFG = wb.Worksheets("CFG")
+Set FACTURA = wb.Worksheets("FACTURA")
+Set  TEMP = wb.Worksheets("temp")
+
+UltimaFila_Ventas = VENTAS.Range("A" & Rows.Count).End(xlUp).Row
+UltimaFila_Clientes = CLIENTE.Range("A" & Rows.Count).End(xlUp).Row
+UltimaFila_Pagos = METODO_PAGO.Range("A" & Rows.Count).End(xlUp).Row
+
+
+Id_Ventas=Cells(UltimaFila_Ventas,1).value
+Id_Cliente=Cells(UltimaFila_Clientes,1).value
+
+If Me.TextBox1.Value > 0 Then
+    METODO_PAGO.Cells() =Me.TextBox1.Value
+ElseIf Me.TextBox2.Value > 0 Then
+
+ElseIf Me.TextBox3.Value > 0 Then
+
+ElseIf Me.TextBox4.Value > 0 Then
+
+ElseIf Me.TextBox5.Value > 0 Then
+
+ElseIf Me.TextBox6.Value > 0 Then
+
+ElseIf Me.TextBox7.Value > 0 Then
+
+ElseIf Me.TextBox8.Value > 0 Then
+
+ElseIf Me.TextBox9.Value > 0 Then
+
+end if

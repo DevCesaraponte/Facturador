@@ -1,0 +1,39 @@
+With UF_FACTURA
+
+
+    .BackColor = RGB(72, 78, 128) 'RGB(230, 230, 250)
+    
+    .Label0.Caption = CFG.Cells(5, 13).Value
+    .Label0.Font.Size = 24
+    .Label0.BorderStyle = fmBorderStyleSingle
+    .Label0.TextAlign = fmTextAlignCenter
+    .Label0.BackColor = RGB(72, 78, 128) 'RGB(127, 255, 212) 'RGB(70, 130, 180)
+    .Label0.ForeColor = vbWhite
+    
+    .Label23.Enabled = False
+    .ComboBox1.Enabled = False
+    .ComboBox1.BackColor = RGB(235, 235, 228)
+    .Label24.Enabled = False
+    .ComboBox2.Enabled = False
+    .ComboBox2.BackColor = RGB(235, 235, 228)
+    .Label25.Enabled = False
+    .ComboBox3.Enabled = False
+    .ComboBox3.BackColor = RGB(235, 235, 228)
+    
+    
+    .CommandButton1.Enabled = False
+
+    'frame datos clientes inhabiliarla
+    .Frame2.Enabled = False
+
+    
+End With
+
+.Frame2.Font.Bold = True
+.Frame2.Font.Italic = True
+.Frame2.Font.Underline = True
+.Frame2.ForeColor = RGB(93, 98, 139)
+.Frame2.Font.Size = 10
+.Frame2.KeepScrollBarsVisible = fmScrollBarsBoth
+.Frame2.BorderColor = RGB(93, 98, 139)
+.Frame2.BorderStyle = fmBorderStyleSingle

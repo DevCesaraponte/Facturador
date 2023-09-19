@@ -1,0 +1,22 @@
+'ventana UF_Factura
+answer = MsgBox("¿ Esta Seguro de Agregar Este Item ?" & vbNewLine & vbNewLine & UF_FACTURA.ComboBox4.Value, vbQuestion + vbYesNo + vbDefaultButton2, "FACTURADOR")
+
+MsgBox ("Error No Exisite Cliente"), vbCritical + vbOKOnly + vbDefaultButton2,"FACTURACION - ERROR - 1001"
+MsgBox ("Error Producto No Exisite Producto"), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURACION - ERROR - 1002"
+MsgBox ("El Valor de " & CFG.Cells(13, 13).Value & "Es Mayor A La Existencia"), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURADOR - ERROR - 1003"
+MsgBox ("El Valor de " & CFG.Cells(13, 13).Value & " No Puede Ser Vacia o Cero 0 "), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURADOR - ERROR - 1004"
+MsgBox ("El Valor de " & CFG.Cells(14, 13).Value & " No Puede Ser Vacia o Cero 0 "), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURADOR - ERROR - 1005"
+MsgBox ("Debe Ingresar Numero Movil mayor a 9 digitos"), vbCritical + vbOKOnly + vbDefaultButton2, "Facturador - ERROR - 1006"
+MsgBox ("Debe Ingresar Cedula mayor a 7 digitos"), vbCritical + vbOKOnly + vbDefaultButton2, "Facturador Error 1007"
+MsgBox ("Debe Ingresar Nombre"), vbCritical + vbOKOnly + vbDefaultButton2, "Facturador - ERROR - 1008"
+MsgBox ("Debe Ingresar Apellido"), vbCritical + vbOKOnly + vbDefaultButton2, "Facturador - ERROR - 1009"
+MsgBox ("Debe Ingresar Numero Movil"), vbCritical + vbOKOnly + vbDefaultButton2, "Facturador - ERROR - 1010"
+MsgBox ("Debe Ingresar Cedula"), vbCritical + vbOKOnly + vbDefaultButton2, "Facturador - ERROR -  1011"
+MsgBox ("Solo se Permiten Numeros"), vbCritical + vbOKOnly + vbDefaultButton2, "Facturador - ERROR -  1012"
+
+' Ventana pagos
+MsgBox ("Error Producto No Exisite Empleado"), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURACION - ERROR - 1013"
+MsgBox ("El Valor Debe ser Mayor a Cero 0"), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURACION - ERROR - 1014"
+MsgBox ("Debe Elegir un Empleado y Minimo Colocar un Valor Mayor a 0 "), vbCritical + vbOKOnly + vbDefaultButton2, "FACTURACION - ERROR - 1015"
+
+
