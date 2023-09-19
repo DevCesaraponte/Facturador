@@ -1,0 +1,239 @@
+'primera version
+
+'funcion diseño de factura de facturador 
+Function DISENO_FACT()
+
+
+With Label1
+        .Caption = FACTURA.Cells(1, 6)
+        .BackColor = RGB(65, 105, 225)
+        .ForeColor = vbWhite
+        .TextAlign = fmTextAlignCenter
+        .Font.Size = 10
+End With
+
+With Label2
+        .Caption = FACTURA.Cells(2, 6)
+        .BackColor = vbWhite
+        .ForeColor = vbBlack
+        .TextAlign = fmTextAlignCenter
+        .Font.Size = 10
+        .BorderStyle = fmBorderStyleSingle
+End With
+With Label3
+        .Caption = FACTURA.Cells(3, 6)
+        .BackColor = RGB(65, 105, 225)
+        .ForeColor = vbWhite
+        .TextAlign = fmTextAlignCenter
+        .Font.Size = 10
+End With
+
+With Label4
+        .Caption = FACTURA.Cells(4, 6)
+        .BackColor = vbWhite
+        .ForeColor = vbBlack
+        .TextAlign = fmTextAlignCenter
+        .Font.Size = 10
+        .BorderStyle = fmBorderStyleSingle
+End With
+
+With UF_FACTURA.Label5
+
+.Caption = FACTURA.Cells(3, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label6
+
+.Caption = FACTURA.Cells(4, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label7
+
+.Caption = FACTURA.Cells(5, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label8
+
+.Caption = FACTURA.Cells(6, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+
+With UF_FACTURA.Label9
+
+.Caption = FACTURA.Cells(7, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label10
+
+.Caption = FACTURA.Cells(3, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label11
+
+.Caption = FACTURA.Cells(4, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label12
+
+.Caption = FACTURA.Cells(5, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label13
+
+.Label13.Caption = FACTURA.Cells(6, 2)
+.Label13.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label14
+
+.Caption = FACTURA.Cells(7, 2)
+.BackColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label15
+
+.Caption = FACTURA.Cells(5, 6)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignCenter
+.Font.Size = 10
+
+End With
+
+With UF_FACTURA.Label16
+
+.Caption = FACTURA.Cells(6, 6)
+.BackColor = vbWhite
+.ForeColor = vbBlack
+.TextAlign = fmTextAlignCenter
+.Font.Size = 10
+.BorderStyle = fmBorderStyleSingle
+
+End With
+
+With UF_FACTURA.Label17
+
+.Caption = FACTURA.Cells(7, 6)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignCenter
+.Font.Size = 10
+
+
+End With
+
+With UF_FACTURA.Label18
+
+.Caption = FACTURA.Cells(8, 6)
+.BackColor = vbWhite
+.ForeColor = vbBlack
+.TextAlign = fmTextAlignCenter
+.Font.Size = 10
+.BorderStyle = fmBorderStyleSingle
+
+End With
+
+With UF_FACTURA.Label19
+
+.Caption = FACTURA.Cells(9, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignCenter
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label20
+
+.Caption = FACTURA.Cells(10, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label21
+
+.Caption = FACTURA.Cells(11, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Label22
+
+.Caption = FACTURA.Cells(12, 1)
+.BackColor = RGB(65, 105, 225)
+.ForeColor = vbWhite
+.TextAlign = fmTextAlignLeft
+.Font.Size = 9
+.BorderStyle = fmBorderStyleSingle
+.BorderColor = vbWhite
+
+End With
+
+With UF_FACTURA.Frame1
+        
+        .BackColor = vbWhite
+End With
+
+With UF_FACTURA.ListBox1
+    .ColumnCount = 5
+    .ColumnHeads = True
+    .RowSource = "TEMP!A2:E33"
+    .ColumnWidths = "100;50;65;30;70"
+End With
+
+end function
